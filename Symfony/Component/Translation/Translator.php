@@ -22,6 +22,7 @@ use Symfony\Component\Config\ConfigCacheFactory;
 use Symfony\Component\Translation\Formatter\MessageFormatterInterface;
 use Symfony\Component\Translation\Formatter\ChoiceMessageFormatterInterface;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
+use Symfony\Polyfill\Mbstring\Mbstring;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
@@ -78,6 +79,9 @@ class Translator implements TranslatorInterface, TranslatorBagInterface
      */
     public function __construct(?string $locale, MessageFormatterInterface $formatter = null, string $cacheDir = null, bool $debug = false)
     {
+
+        Mbstring::mb_init();
+
         $this->setLocale($locale);
 
         if (null === $formatter) {

@@ -4,4 +4,7 @@ projects:
     type: library
     model: virion
     path: ""
+    libs:
+      - src: JackNoordhuis/polyfill-mbstring/polyfill-mbstring
+        version: 1.7.0
 ...
